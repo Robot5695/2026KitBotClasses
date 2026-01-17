@@ -48,10 +48,10 @@ public class CANDriveSubsystem extends SubsystemBase {
 
   public void driveArcade(double xSpeed, double zRotation) {
     //create drive code
-    leftLeader.set(TalonSRXControlMode.PercentOutput,xSpeed+zRotation);
-    leftFollower.set(TalonSRXControlMode.PercentOutput,xSpeed+zRotation);
-    rightLeader.set(TalonSRXControlMode.PercentOutput,-xSpeed+zRotation);
-    rightFollower.set(TalonSRXControlMode.PercentOutput,-xSpeed+zRotation);
+    leftLeader.set(TalonSRXControlMode.PercentOutput,xSpeed-zRotation);
+    leftFollower.set(TalonSRXControlMode.PercentOutput,xSpeed-zRotation);
+    rightLeader.set(TalonSRXControlMode.PercentOutput,-xSpeed-zRotation);
+    rightFollower.set(TalonSRXControlMode.PercentOutput,-xSpeed-zRotation);
     
   }
 
