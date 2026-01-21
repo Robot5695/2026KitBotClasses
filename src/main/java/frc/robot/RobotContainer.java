@@ -87,6 +87,7 @@ public class RobotContainer {
     driveSubsystem.setDefaultCommand(new Drive(driveSubsystem, driverController));
 
     fuelSubsystem.setDefaultCommand(fuelSubsystem.run(() -> fuelSubsystem.stop()));
+    protoLauncherSubsystem.setDefaultCommand(protoLauncherSubsystem.run(()->protoLauncherSubsystem.stop()));
   }
 
   /**
