@@ -57,6 +57,8 @@ public final class Constants {
     public static final double PROTO_FEEDER_POWER = 0.5;
     public static final double PROTO_INTAKE_POWER= 0.5;
     public static final double PROTO_LAUNCHER_POWER = 0.5;
+
+    public static final double PROTO_SPIN_UP = 1;
   }
 
   public static final class OperatorConstants {

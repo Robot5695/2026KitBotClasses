@@ -14,8 +14,10 @@ import frc.robot.commands.Eject;
 import frc.robot.commands.ExampleAuto;
 import frc.robot.commands.Intake;
 import frc.robot.commands.LaunchSequence;
+import frc.robot.commands.ProtoLaunchSequence;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANFuelSubsystem;
+import frc.robot.subsystems.ProtoLauncher;
 
 /**
  * This class is where the bulk of the robot should be declared. Since
@@ -28,6 +30,7 @@ public class RobotContainer {
   // The robot's subsystems
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANFuelSubsystem fuelSubsystem = new CANFuelSubsystem();
+  private final ProtoLauncher protoLauncherSubsystem = new ProtoLauncher();
 
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(
@@ -73,6 +76,8 @@ public class RobotContainer {
     // While the A button is held on the operator controller, eject fuel back out
     // the intake
     driverController.a().whileTrue(new Eject(fuelSubsystem));
+    // Y button runs prototype launcher sequence
+    driverController.y().whileTrue(new ProtoLaunchSequence(protoLauncherSubsystem));
 
     // Set the default command for the drive subsystem to the command provided by
     // factory with the values provided by the joystick axes on the driver
