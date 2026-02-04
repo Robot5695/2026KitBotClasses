@@ -43,7 +43,7 @@ if (hasTarget)
 {
   driveSubsystem.driveArcade(0,0);
 } else {
-  driveSubsystem.driveArcade(0,0.1); // Robot is rotating slowly if theres no target
+  driveSubsystem.driveArcade(0,0.2); // Robot is rotating slowly if theres no target
 }
 
   }
