@@ -79,6 +79,9 @@ public class RobotContainer {
     // Y button runs prototype launcher sequence
     driverController.y().whileTrue(new ProtoLaunchSequence(protoLauncherSubsystem));
 
+    //set up x button for "home in" function, to automatically rotate and align on hub
+    //driveController.x().whileTrue(new <HOME_IN_SEQUENCE>)
+
     // Set the default command for the drive subsystem to the command provided by
     // factory with the values provided by the joystick axes on the driver
     // controller. The Y axis of the controller is inverted so that pushing the
