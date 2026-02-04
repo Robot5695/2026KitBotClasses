@@ -27,8 +27,8 @@ public class ProtoLaunch extends Command {
     protoLauncherSubsystem
         .setLauncherRoller(
             SmartDashboard.getNumber("Proto launch roller value", PROTO_LAUNCHER_POWER));
-    protoLauncherSubsystem.setFeederRoller(SmartDashboard.getNumber("Proto feeder roller value", PROTO_FEEDER_POWER));
-    protoLauncherSubsystem.setIntakeRoller(SmartDashboard.getNumber("Proto intake roller value", PROTO_INTAKE_POWER));
+  //  protoLauncherSubsystem.setFeederRoller(SmartDashboard.getNumber("Proto feeder roller value", PROTO_FEEDER_POWER));
+   // protoLauncherSubsystem.setIntakeRoller(SmartDashboard.getNumber("Proto intake roller value", PROTO_INTAKE_POWER));
   }
 
   // Called every time the scheduler runs while the command is scheduled. This

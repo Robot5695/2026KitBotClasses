@@ -20,8 +20,8 @@ import static frc.robot.Constants.ProtoConstants.*;
 public class ProtoLauncher extends SubsystemBase {
   /* private final SparkMax feederRoller;
   private final SparkMax intakeLauncherRoller; */
-private final TalonSRX feederRoller; //Rollers on back of prototype launcher
-private final TalonSRX intakeRoller; //Orange star at center of launcher
+//private final TalonSRX feederRoller; //Rollers on back of prototype launcher
+//private final TalonSRX intakeRoller; //Orange star at center of launcher
 private final SparkFlex launcherRoller; //The launcher wheel
 
 
@@ -31,8 +31,8 @@ private final SparkFlex launcherRoller; //The launcher wheel
     /* intakeLauncherRoller = new SparkMax(INTAKE_LAUNCHER_MOTOR_ID, MotorType.kBrushed);
     feederRoller = new SparkMax(FEEDER_MOTOR_ID, MotorType.kBrushed); */
 
-  intakeRoller = new TalonSRX(PROTO_INTAKE_MOTOR_ID);
-  feederRoller = new TalonSRX(PROTO_FEEDER_MOTOR_ID);
+ // intakeRoller = new TalonSRX(PROTO_INTAKE_MOTOR_ID);
+ // feederRoller = new TalonSRX(PROTO_FEEDER_MOTOR_ID);
   launcherRoller = new SparkFlex(PROTO_LAUNCHER_MOTOR_ID, MotorType.kBrushless);
 
     
@@ -46,17 +46,17 @@ private final SparkFlex launcherRoller; //The launcher wheel
     
   }
 
-  // A method to set the voltage of the intake roller
+  /* A method to set the voltage of the intake roller
   public void setIntakeRoller(double voltage) {
-    //intakeLauncherRoller.setVoltage(voltage);
+    intakeLauncherRoller.setVoltage(voltage);
     intakeRoller.set(TalonSRXControlMode.PercentOutput, voltage);
   }
 
   // A method to set the voltage of the intake roller
   public void setFeederRoller(double voltage) {
-    //feederRoller.setVoltage(voltage);
+    feederRoller.setVoltage(voltage);
     feederRoller.set(TalonSRXControlMode.PercentOutput, voltage);
-  }
+  }*/
 
 // A method to set the power of the prototype launcher wheel
 public void setLauncherRoller (double voltage) {
@@ -66,8 +66,8 @@ public void setLauncherRoller (double voltage) {
 
   // A method to stop the rollers
   public void stop() {
-    feederRoller.set(TalonSRXControlMode.PercentOutput,0);
-    intakeRoller.set(TalonSRXControlMode.PercentOutput,0);
+   // feederRoller.set(TalonSRXControlMode.PercentOutput,0);
+   // intakeRoller.set(TalonSRXControlMode.PercentOutput,0);
     launcherRoller.set(0);
   }
 

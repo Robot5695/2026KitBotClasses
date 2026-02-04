@@ -17,7 +17,7 @@ public class ProtoLaunchSequence extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-        new ProtoSpinUp(protoLauncherSubsystem).withTimeout(PROTO_SPIN_UP),
+     //   new ProtoSpinUp(protoLauncherSubsystem).withTimeout(PROTO_SPIN_UP),
         new ProtoLaunch(protoLauncherSubsystem));
   }
 }
