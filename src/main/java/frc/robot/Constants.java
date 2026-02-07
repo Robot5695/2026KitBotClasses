@@ -45,6 +45,7 @@ public final class Constants {
     public static final double LAUNCHING_LAUNCHER_VOLTAGE = 1;
     public static final double SPIN_UP_FEEDER_VOLTAGE = 0.5;
     public static final double SPIN_UP_SECONDS = 1;
+    public static final double AUTO_LAUNCH_SECONDS = 3;
   }
 
   public static final class ProtoConstants{
