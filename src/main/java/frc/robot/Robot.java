@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.hal.HAL;
 import edu.wpi.first.hal.FRCNetComm.tResourceType;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 
@@ -23,6 +24,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
+  private long GameTimer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -99,11 +101,17 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    GameTimer = System.currentTimeMillis();
   }
 
   /** This function is called periodically during operator control. */
   @Override
   public void teleopPeriodic() {
+    if(System.currentTimeMillis()-GameTimer > 90000 && System.currentTimeMillis()-GameTimer < 95000){
+      m_robotContainer.driverController.setRumble(RumbleType.kBothRumble, 1);
+    } else {
+      m_robotContainer.driverController.setRumble(RumbleType.kBothRumble, 0);
+    }
   }
 
   @Override

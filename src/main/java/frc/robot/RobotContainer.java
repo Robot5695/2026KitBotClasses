@@ -40,7 +40,7 @@ public class RobotContainer {
   private final ProtoLauncher protoLauncherSubsystem = new ProtoLauncher();
   private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   // The driver's controller
-  private final CommandXboxController driverController = new CommandXboxController(
+  public final CommandXboxController driverController = new CommandXboxController(
       DRIVER_CONTROLLER_PORT);
 
   // The operator's controller
