@@ -16,11 +16,14 @@ import frc.robot.commands.Drive;
 import frc.robot.commands.Eject;
 import frc.robot.commands.ExampleAuto;
 import frc.robot.commands.Intake;
+import frc.robot.commands.IntakeDown;
+import frc.robot.commands.IntakeUp;
 import frc.robot.commands.LaunchSequence;
 import frc.robot.commands.ProtoLaunchSequence;
 import frc.robot.commands.TargetLock;
 import frc.robot.subsystems.CANDriveSubsystem;
 import frc.robot.subsystems.CANFuelSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.ProtoLauncher;
 
 /**
@@ -35,7 +38,7 @@ public class RobotContainer {
   private final CANDriveSubsystem driveSubsystem = new CANDriveSubsystem();
   private final CANFuelSubsystem fuelSubsystem = new CANFuelSubsystem();
   private final ProtoLauncher protoLauncherSubsystem = new ProtoLauncher();
-
+  private final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   // The driver's controller
   private final CommandXboxController driverController = new CommandXboxController(
       DRIVER_CONTROLLER_PORT);
@@ -87,6 +90,8 @@ public class RobotContainer {
     // Y button runs prototype launcher sequence
     driverController.y().whileTrue(new ProtoLaunchSequence(protoLauncherSubsystem));
 
+    driverController.b().onTrue(new IntakeUp(intakeSubsystem));
+    driverController.x().onTrue(new IntakeDown(intakeSubsystem));
     //set up x button for "home in" function, to automatically rotate and align on hub
     //driveController.x().whileTrue(new <HOME_IN_SEQUENCE>)
 
