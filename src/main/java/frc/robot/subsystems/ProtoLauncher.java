@@ -13,6 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import static frc.robot.Constants.ProtoConstants.*;
@@ -23,7 +24,7 @@ public class ProtoLauncher extends SubsystemBase {
 //private final TalonSRX feederRoller; //Rollers on back of prototype launcher
 //private final TalonSRX intakeRoller; //Orange star at center of launcher
 private final SparkFlex launcherRoller; //The launcher wheel
-
+private final Servo deflector;
 
   /** Creates a new CANBallSubsystem. */
   public ProtoLauncher() {
@@ -34,7 +35,7 @@ private final SparkFlex launcherRoller; //The launcher wheel
  // intakeRoller = new TalonSRX(PROTO_INTAKE_MOTOR_ID);
  // feederRoller = new TalonSRX(PROTO_FEEDER_MOTOR_ID);
   launcherRoller = new SparkFlex(PROTO_LAUNCHER_MOTOR_ID, MotorType.kBrushless);
-
+  deflector = new Servo(0);
     
     // put default values for various fuel operations onto the dashboard
     // all commands using this subsystem pull values from the dashbaord to allow
@@ -64,6 +65,10 @@ public void setLauncherRoller (double voltage) {
   launcherRoller.set(voltage);
 }
 
+
+public void setDeflector(double Angle){
+  deflector.set(Angle);
+}
   // A method to stop the rollers
   public void stop() {
    // feederRoller.set(TalonSRXControlMode.PercentOutput,0);

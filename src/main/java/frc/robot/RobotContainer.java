@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import static frc.robot.Constants.OperatorConstants.*;
@@ -92,6 +93,8 @@ public class RobotContainer {
 
     driverController.b().onTrue(new IntakeUp(intakeSubsystem));
     driverController.x().onTrue(new IntakeDown(intakeSubsystem));
+    driverController.povLeft().onTrue(new RunCommand(()->protoLauncherSubsystem.setDeflector(0),protoLauncherSubsystem));
+    driverController.povRight().onTrue(new RunCommand(()->protoLauncherSubsystem.setDeflector(1),protoLauncherSubsystem));
     //set up x button for "home in" function, to automatically rotate and align on hub
     //driveController.x().whileTrue(new <HOME_IN_SEQUENCE>)
 
