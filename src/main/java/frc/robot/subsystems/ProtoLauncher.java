@@ -7,6 +7,8 @@ package frc.robot.subsystems;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkBaseConfig;
+import com.revrobotics.spark.config.SparkFlexConfig;
 import com.revrobotics.spark.config.SparkMaxConfig;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
@@ -24,6 +26,8 @@ public class ProtoLauncher extends SubsystemBase {
 //private final TalonSRX feederRoller; //Rollers on back of prototype launcher
 //private final TalonSRX intakeRoller; //Orange star at center of launcher
 private final SparkFlex launcherRoller; //The launcher wheel
+private final SparkFlex launcherRoller2;
+private final SparkMax feederRoller; // REV Neo that feeds the launcher
 private final Servo deflector;
 
   /** Creates a new CANBallSubsystem. */
@@ -36,6 +40,13 @@ private final Servo deflector;
  // feederRoller = new TalonSRX(PROTO_FEEDER_MOTOR_ID);
   launcherRoller = new SparkFlex(PROTO_LAUNCHER_MOTOR_ID, MotorType.kBrushless);
   deflector = new Servo(0);
+
+  launcherRoller2 = new SparkFlex(PROTO_LAUNCHER_MOTOR2_ID, MotorType.kBrushless);
+  feederRoller = new SparkMax(PROTO_FEEDER_MOTOR_ID, MotorType.kBrushless);
+  SparkBaseConfig LauncherRoller2Config = new SparkFlexConfig();
+  LauncherRoller2Config.follow(launcherRoller);
+  launcherRoller2.configure(LauncherRoller2Config, com.revrobotics.ResetMode.kResetSafeParameters
+  , com.revrobotics.PersistMode.kNoPersistParameters);
     
     // put default values for various fuel operations onto the dashboard
     // all commands using this subsystem pull values from the dashbaord to allow
@@ -65,6 +76,9 @@ public void setLauncherRoller (double voltage) {
   launcherRoller.set(voltage);
 }
 
+public void setFeederRoller(double voltage){
+  feederRoller.set(voltage);
+}
 
 public void setDeflector(double Angle){
   deflector.set(Angle);
@@ -74,6 +88,7 @@ public void setDeflector(double Angle){
    // feederRoller.set(TalonSRXControlMode.PercentOutput,0);
    // intakeRoller.set(TalonSRXControlMode.PercentOutput,0);
     launcherRoller.set(0);
+    feederRoller.set(0);
   }
 
   @Override
