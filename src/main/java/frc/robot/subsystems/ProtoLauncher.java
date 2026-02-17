@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.RelativeEncoder;
 import com.revrobotics.spark.SparkBase.PersistMode;
 import com.revrobotics.spark.SparkBase.ResetMode;
 import com.revrobotics.spark.SparkLowLevel.MotorType;
@@ -15,6 +16,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.revrobotics.spark.SparkFlex;
 import com.revrobotics.spark.SparkMax;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -29,6 +31,7 @@ private final SparkFlex launcherRoller; //The launcher wheel
 private final SparkFlex launcherRoller2;
 private final SparkMax feederRoller; // REV Neo that feeds the launcher
 private final Servo deflector;
+private final RelativeEncoder launcherEncoder;
 
   /** Creates a new CANBallSubsystem. */
   public ProtoLauncher() {
@@ -40,6 +43,7 @@ private final Servo deflector;
  // feederRoller = new TalonSRX(PROTO_FEEDER_MOTOR_ID);
   launcherRoller = new SparkFlex(PROTO_LAUNCHER_MOTOR_ID, MotorType.kBrushless);
   deflector = new Servo(0);
+  launcherEncoder = launcherRoller.getEncoder();
 
   launcherRoller2 = new SparkFlex(PROTO_LAUNCHER_MOTOR2_ID, MotorType.kBrushless);
   feederRoller = new SparkMax(PROTO_FEEDER_MOTOR_ID, MotorType.kBrushless);
@@ -94,5 +98,6 @@ public void setDeflector(double Angle){
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Launcher Speed (RPM)", launcherEncoder.getVelocity());
   }
 }
