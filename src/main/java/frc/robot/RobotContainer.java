@@ -12,7 +12,10 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import static frc.robot.Constants.OperatorConstants.*;
 
+import frc.robot.commands.AutoCenterSequence;
 import frc.robot.commands.AutoLaunchSequence;
+import frc.robot.commands.AutoLeftSequence;
+import frc.robot.commands.AutoRightSequence;
 import frc.robot.commands.Drive;
 import frc.robot.commands.Eject;
 import frc.robot.commands.ExampleAuto;
@@ -60,9 +63,12 @@ public class RobotContainer {
     // Set the options to show up in the Dashboard for selecting auto modes. If you
     // add additional auto modes you can add additional lines here with
     // autoChooser.addOption
-    autoChooser.setDefaultOption("Autonomous", new ExampleAuto(driveSubsystem, fuelSubsystem));
-    autoChooser.addOption("Center robot",new TargetLock(driveSubsystem));
-    autoChooser.addOption("Auto score",new AutoLaunchSequence(driveSubsystem, fuelSubsystem));
+    //autoChooser.setDefaultOption("Autonomous", new ExampleAuto(driveSubsystem, fuelSubsystem));
+    autoChooser.setDefaultOption("Score only", new AutoLaunchSequence(driveSubsystem,fuelSubsystem));
+    //autoChooser.addOption("Center robot",new TargetLock(driveSubsystem));
+    autoChooser.addOption("Auto Center",new AutoCenterSequence(driveSubsystem, fuelSubsystem));
+autoChooser.addOption("Auto Left",new AutoLeftSequence(driveSubsystem, fuelSubsystem));
+autoChooser.addOption("Auto Right",new AutoRightSequence(driveSubsystem, fuelSubsystem));
 
     SmartDashboard.putData(autoChooser);
   }

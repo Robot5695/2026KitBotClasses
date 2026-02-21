@@ -56,12 +56,12 @@ double tync = LimelightHelpers.getTYNC("");  // Vertical offset from principal p
 if (hasTarget)
 {
 
-  double maxZ = 0.1;
-  double maxX = 0.1;
+  double maxZ = 0.15;
+  double maxX = 0.2;
 
   //positive is counter-clockwise, negative is clockwise
-  double zSpeed = -ta*ty/(60);
-  double xSpeed = (0.1); //Movement speed is constant
+  double zSpeed = 25-ty;
+  double xSpeed = 0; //Movement speed is constant
   if (zSpeed > maxZ)
   {
     zSpeed = maxZ;
@@ -80,7 +80,7 @@ if (hasTarget)
   }
   driveSubsystem.driveArcade(xSpeed,zSpeed);//Choose center coordinates
 } else { //No target in sight
-  driveSubsystem.driveArcade(0.1,0); // Robot is moving slowly backwards if theres no target
+  driveSubsystem.driveArcade(0.2,0); // Robot is moving slowly backwards if theres no target
 }
 
   }
@@ -99,6 +99,6 @@ double tx = LimelightHelpers.getTX("");  // Horizontal offset from crosshair to 
 double ty = LimelightHelpers.getTY("");  // Vertical offset from crosshair to target in degrees
 double ta = LimelightHelpers.getTA("");  // Target area (0% to 100% of image)
 boolean hasTarget = LimelightHelpers.getTV(""); // Do you have a valid target?
-    return ((System.currentTimeMillis()-depotMoveStartTime>5000) || Math.abs(ta)<2 && Math.abs(ty)<2 && hasTarget);
+    return false;
   }
 }

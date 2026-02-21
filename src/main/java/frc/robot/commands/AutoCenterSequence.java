@@ -12,30 +12,15 @@ import frc.robot.subsystems.CANFuelSubsystem;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class AutoLaunchSequence extends SequentialCommandGroup {
+public class AutoCenterSequence extends SequentialCommandGroup {
   /** Creates a new LaunchSequence. */
-  public AutoLaunchSequence(CANDriveSubsystem driveSubsystem, CANFuelSubsystem fuelSubsystem) {
+  public AutoCenterSequence(CANDriveSubsystem driveSubsystem, CANFuelSubsystem fuelSubsystem) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
         new TargetLock(driveSubsystem, false),
         new SpinUp(fuelSubsystem).withTimeout(FuelConstants.SPIN_UP_SECONDS),
         new Launch(fuelSubsystem).withTimeout(FuelConstants.AUTO_LAUNCH_SECONDS));
-        //rotate toward depot
-        //move to depot
-        //run intake
-        //rotate to hub
-        //move
-        //shoot
-
-        //right side rotation
-        //shoot
-        //rotate intake toward outpost
-        //move to outpost, with hopper oriented toward outpost
-        //wait 2s
-        //rotate to hub
-        //move
-        //shoot
 
         //center start
         //move back until target detected

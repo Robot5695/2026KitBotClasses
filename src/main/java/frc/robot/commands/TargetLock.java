@@ -12,11 +12,12 @@ import frc.robot.subsystems.CANDriveSubsystem;
 public class TargetLock extends Command {
   /** Creates a new Drive. */
   CANDriveSubsystem driveSubsystem;
-  
+  boolean clockwise;
 
-  public TargetLock(CANDriveSubsystem driveSystem) {
+  public TargetLock(CANDriveSubsystem driveSystem, boolean clockwise) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(driveSystem);
+    this.clockwise = clockwise;
     driveSubsystem = driveSystem;
   }
 
@@ -66,7 +67,12 @@ if (hasTarget)
   }
   driveSubsystem.driveArcade(xSpeed,zSpeed);//Choose center coordinates
 } else {
-  driveSubsystem.driveArcade(0,0.15); // Robot is rotating slowly if theres no target
+  if(clockwise){
+    driveSubsystem.driveArcade(0,-0.15); // Robot is rotating slowly if theres no target
+  } else {
+    driveSubsystem.driveArcade(0,0.15); // Robot is rotating slowly if theres no target
+  }
+  
 }
 
   }
